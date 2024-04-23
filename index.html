@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap CSS for styling -->
+
+    
+    <title>Fetch Dynamic Response</title>
+</head>
+<body>
+    
+    <div id="app">
+        <div class="col-md-6" style="margin: 1rem auto; padding: 1rem; border: 1px solid black;">
+          <h1 style="text-align: center; margin: 1rem auto">Tra cứu địa chỉ khu phố</h1>
+          <form @submit.prevent="getData">
+            <input type="search" class="form-control" v-model="query" placeholder="Nhập địa chỉ...">
+            <input type="submit" class="btn btn-primary" style="display: block;margin: 1rem auto" value="Tìm kiếm">
+          </form>
+          
+          <!-- Hiển thị lỗi -->
+          <div v-if="error" class="alert alert-danger">{{ error }}</div>
+          
+          <!-- Hiển thị kết quả -->
+          <div v-else>
+            <h2>Kết quả tìm kiếm:</h2>
+              <li v-for="result in results" :key="result['Địa chỉ']">
+              <p>Địa chỉ {{ result["Địa chỉ"] || 'Không rõ địa chỉ' }}  </p>
+              <p>Đường: {{ result["Đường"] || 'Không rõ đường' }}  </p>
+              <p>Khu phố : {{ result["Khu phố"] || 'Không rõ khu phố' }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+       
+      
+
+    <!-- Bootstrap Bundle with Popper (should be at the end) -->
+
+    
+    <!-- Axios for HTTP requests -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <!-- Vue 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.30/vue.global.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
